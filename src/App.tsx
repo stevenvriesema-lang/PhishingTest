@@ -52,16 +52,18 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header with logo */}
+      {/* Header with centered logo */}
       <header className="bg-[#09529a] py-4">
-        <div className="container mx-auto px-8">
-          <div className="bg-white rounded-lg p-2 inline-block">
+        <div className="flex justify-center">
+          <div className="w-1/4"></div>
+          <div className="w-1/2 bg-white rounded-lg p-2 flex justify-center">
             <img 
               src="https://terwille.nl/wp-content/uploads/elementor/thumbs/Logo-Terwille-quv3ffjb1m15we0fi4hoyd4okjrgf9ca20xl99s2hs.jpg" 
               alt="Terwille" 
               className="h-12 w-auto"
             />
           </div>
+          <div className="w-1/4"></div>
         </div>
       </header>
 
