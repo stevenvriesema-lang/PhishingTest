@@ -56,7 +56,7 @@ function App() {
       <header className="bg-[#09529a] py-4 px-8">
         <div className="bg-white rounded-lg p-2 w-fit">
           <img 
-            src="/Logo-Terwille.jpg" 
+            src="https://terwille.nl/wp-content/uploads/elementor/thumbs/Logo-Terwille-quv3ffjb1m15we0fi4hoyd4okjrgf9ca20xl99s2hs.jpg" 
             alt="Terwille" 
             className="h-12 w-auto"
           />

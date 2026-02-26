@@ -153,7 +153,7 @@ function RickCard() {
               <div className="flex items-center justify-between mb-3 flex-shrink-0">
                 <div className="bg-white rounded-lg p-2">
                   <img 
-                    src="/Logo-Terwille.jpg" 
+                    src="https://terwille.nl/wp-content/uploads/elementor/thumbs/Logo-Terwille-quv3ffjb1m15we0fi4hoyd4okjrgf9ca20xl99s2hs.jpg" 
                     alt="Terwille" 
                     className="h-8 w-auto"
                   />

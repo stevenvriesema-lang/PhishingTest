@@ -35,7 +35,7 @@ function LandingPage({ onContinue }: LandingPageProps) {
       {/* Logo with white background */}
       <div className="mb-12 bg-white rounded-lg p-4">
         <img 
-          src="/Logo-Terwille.jpg" 
+          src="https://terwille.nl/wp-content/uploads/elementor/thumbs/Logo-Terwille-quv3ffjb1m15we0fi4hoyd4okjrgf9ca20xl99s2hs.jpg" 
           alt="Terwille" 
           className="h-24 w-auto"
         />
