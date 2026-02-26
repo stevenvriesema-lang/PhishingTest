@@ -146,9 +146,9 @@ function RickCard() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 md:absolute md:inset-0 bg-[#09529a]/95 flex items-center justify-center p-4 md:p-8 z-50"
+            className="fixed inset-0 bg-[#09529a]/95 flex items-center justify-center p-4 md:p-8 z-50 overflow-y-auto"
           >
-            <div className="max-w-2xl text-white w-full h-full flex flex-col max-h-[95vh] md:max-h-[90vh]">
+            <div className="max-w-2xl text-white w-full flex flex-col">
               {/* Header with counter - subtle */}
               <div className="flex items-center justify-between mb-3 flex-shrink-0">
                 <div className="bg-white rounded-lg p-2">
