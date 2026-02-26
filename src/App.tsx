@@ -53,7 +53,7 @@ function App() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header with centered logo */}
-      <header className="bg-[#09529a] py-4">
+      <header className="bg-[#09529a] py-2">
         <div className="flex justify-center">
           <div className="w-1/4"></div>
           <div className="w-1/2 bg-white rounded-lg p-2 flex justify-center">
