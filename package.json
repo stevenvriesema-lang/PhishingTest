@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "name": "terwille-phishing-awareness",
   "version": "1.0.0",
@@ -40,3 +41,47 @@
     "vite": "^5.4.2"
   }
 }
+=======
+{
+  "name": "terwille-phishing-awareness",
+  "version": "1.0.0",
+  "description": "Internal phishing awareness landing page with Rickroll - Terwille style",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
+    "dev:client": "vite",
+    "dev:server": "tsx watch server/index.ts",
+    "build": "tsc && vite build && tsup server/index.ts --outDir dist-server --format esm",
+    "preview": "vite preview",
+    "start": "node dist-server/index.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.3.0",
+    "compression": "^1.7.4",
+    "express": "^4.21.0",
+    "helmet": "^7.1.0",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.11",
+    "@types/compression": "^1.7.5",
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.5.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@types/uuid": "^10.0.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^9.0.1",
+    "framer-motion": "^11.3.28",
+    "postcss": "^8.4.41",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^3.4.10",
+    "tsx": "^4.19.0",
+    "tsup": "^8.2.4",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.2"
+  }
+}
+>>>>>>> 67edcca6ce146a05e10bf170df2762054b803a59
