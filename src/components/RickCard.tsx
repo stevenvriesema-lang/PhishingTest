@@ -114,7 +114,7 @@ function RickCard() {
       <div className="relative rounded-lg overflow-hidden shadow-2xl w-full">
         <iframe
           ref={iframeRef}
-          className="w-full h-[300px] md:aspect-video"
+          className="w-full h-[300px] md:h-[500px] md:w-auto md:aspect-video"
           src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1&mute=0&modestbranding=1&playsinline=1&rel=0&enablejsapi=1&volume=30"
           title="Never Gonna Give You Up"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
