@@ -111,10 +111,10 @@ function RickCard() {
   return (
     <div className="relative">
       {/* Video container with rounded corners */}
-      <div className="relative rounded-lg overflow-hidden shadow-2xl">
+      <div className="relative rounded-lg overflow-hidden shadow-2xl w-full">
         <iframe
           ref={iframeRef}
-          className="w-full aspect-video"
+          className="w-full h-[300px] md:aspect-video"
           src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1&mute=0&modestbranding=1&playsinline=1&rel=0&enablejsapi=1&volume=30"
           title="Never Gonna Give You Up"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -146,9 +146,9 @@ function RickCard() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
-            className="absolute inset-0 bg-[#09529a]/95 flex items-center justify-center p-8"
+            className="fixed inset-0 md:absolute md:inset-0 bg-[#09529a]/95 flex items-center justify-center p-4 md:p-8 z-50"
           >
-            <div className="max-w-2xl text-white w-full h-full flex flex-col">
+            <div className="max-w-2xl text-white w-full h-full flex flex-col max-h-[85vh] md:max-h-none">
               {/* Header with counter - subtle */}
               <div className="flex items-center justify-between mb-3 flex-shrink-0">
                 <div className="bg-white rounded-lg p-2">
