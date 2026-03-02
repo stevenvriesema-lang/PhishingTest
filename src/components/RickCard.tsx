@@ -60,6 +60,7 @@ function RickCard() {
     const scrollContainer = scrollContainerRef.current
     const scrollHeight = scrollContainer.scrollHeight - scrollContainer.clientHeight
     let animationFrame: number
+    let startDelayTimer: ReturnType<typeof setTimeout>
 
     const animateScroll = () => {
       setScrollProgress(prev => {
@@ -77,9 +78,12 @@ function RickCard() {
       animationFrame = requestAnimationFrame(animateScroll)
     }
 
-    animationFrame = requestAnimationFrame(animateScroll)
+    startDelayTimer = setTimeout(() => {
+      animationFrame = requestAnimationFrame(animateScroll)
+    }, 5000)
 
     return () => {
+      clearTimeout(startDelayTimer)
       if (animationFrame) {
         cancelAnimationFrame(animationFrame)
       }

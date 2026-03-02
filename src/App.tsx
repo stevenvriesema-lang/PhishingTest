@@ -5,6 +5,7 @@ import LandingPage from './components/LandingPage'
 import RickCard from './components/RickCard'
 import TipsGrid from './components/TipsGrid'
 import FooterNote from './components/FooterNote'
+import TerwilleMenuBar from './components/TerwilleMenuBar'
 
 interface HitPayload {
   ts: string
@@ -52,20 +53,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header with centered logo */}
-      <header className="bg-[#09529a] py-2">
-        <div className="flex justify-center">
-          <div className="w-1/3"></div>
-          <div className="w-1/3 bg-white rounded-lg p-2 flex justify-center max-w-xs">
-            <img 
-              src="https://terwille.nl/wp-content/uploads/elementor/thumbs/Logo-Terwille-quv3ffjb1m15we0fi4hoyd4okjrgf9ca20xl99s2hs.jpg" 
-              alt="Terwille" 
-              className="h-12 w-auto"
-            />
-          </div>
-          <div className="w-1/3"></div>
-        </div>
-      </header>
+      <TerwilleMenuBar />
 
       {/* Main content */}
       <main className="container mx-auto px-4 py-8">
