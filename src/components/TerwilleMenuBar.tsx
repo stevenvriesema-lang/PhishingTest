@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import iconSvgByHref from './terwilleMenuIcons.json'
 
 type MenuNode = {
   label: string
@@ -40,7 +41,7 @@ const mainMenu: MenuNode[] = [
   {
     label: 'Verslavingszorg',
     href: 'https://terwille.nl/verslavingszorg/',
-    icon: 'alcohol',
+    icon: 'verslavingszorg',
     children: [
       { label: 'Alcohol', href: 'https://terwille.nl/alcohol/', icon: 'alcohol' },
       { label: 'Gamen', href: 'https://terwille.nl/gamen/', icon: 'gamen' },
@@ -75,9 +76,34 @@ const mainMenu: MenuNode[] = [
 function MenuIcon({ name, small = false }: { name?: string; small?: boolean }) {
   if (!name) return null
 
-  const cls = small ? 'tw-sub-icon' : 'tw-icon'
+  const cls = [
+    small ? 'tw-sub-icon' : 'tw-icon',
+    name === 'https://terwille.nl/verslavingszorg/' ? 'tw-icon--verslavingszorg' : '',
+  ]
+    .filter(Boolean)
+    .join(' ')
+
+  const originalSvg = (iconSvgByHref as Record<string, string>)[name]
+  if (originalSvg) {
+    // Remove embedded helper text blocks from exported HTML to keep SVG clean.
+    const cleanedSvg = originalSvg
+      .replace(/\.cls-1\{[^}]*\}/g, '')
+      .replace(/Created by potrace[^<]*/gi, '')
+
+    return <span className={cls} dangerouslySetInnerHTML={{ __html: cleanedSvg }} />
+  }
 
   switch (name) {
+    case 'verslavingszorg':
+      return (
+        <svg className={cls} viewBox="0 0 663 644" aria-hidden="true">
+          <g transform="translate(0,644) scale(0.1,-0.1)" fill="currentColor" stroke="none">
+            <path d="M3380 6414 c-80 -21 -206 -85 -273 -138 -102 -82 -196 -233 -232 -371 -20 -77 -19 -250 1 -335 30 -131 124 -283 224 -367 106 -89 1624 -1162 1675 -1185 90 -40 178 -58 291 -58 326 0 598 210 679 525 20 77 19 250 -1 335 -30 131 -123 283 -224 367 -105 88 -1624 1162 -1675 1185 -33 15 -87 34 -120 43 -76 19 -269 19 -345 -1z m287 -90 c41 -8 101 -26 132 -40 76 -34 813 -563 804 -578 -3 -6 -112 -159 -241 -340 -129 -180 -235 -335 -236 -342 0 -8 176 -141 393 -296 422 -303 426 -307 400 -370 -14 -34 -66 -62 -96 -51 -28 9 -803 565 -803 575 0 5 17 32 38 61 21 29 41 57 45 64 5 8 -106 93 -320 246 -416 298 -401 287 -435 287 -69 0 -105 -96 -54 -143 13 -12 180 -132 370 -267 190 -135 345 -247 346 -250 0 -3 -22 -36 -48 -73 l-48 -67 -365 261 c-200 144 -386 282 -412 308 -143 138 -211 349 -172 536 26 128 74 217 169 311 92 92 182 142 301 168 92 19 140 19 232 0z" />
+            <path d="M1798 5333 c-147 -365 -255 -756 -308 -1108 -26 -176 -37 -464 -21 -604 6 -57 9 -106 7 -109 -3 -2 -26 16 -53 40 -113 103 -285 227 -458 328 -220 129 -615 311 -858 396 l-99 34 32 -58 c93 -166 336 -510 495 -702 115 -137 284 -308 397 -402 111 -92 111 -91 -9 -102 -214 -19 -611 -129 -848 -235 l-60 -27 90 -38 c300 -127 678 -220 943 -233 l122 -6 -35 -41 c-114 -132 -252 -322 -242 -332 7 -7 157 24 270 56 232 65 410 153 548 271 l56 48 7 -132 c16 -298 70 -522 171 -703 l36 -63 89 61 c50 34 92 70 95 80 4 10 -11 48 -35 91 -46 85 -82 183 -111 302 -22 94 -49 272 -49 328 l0 39 50 -45 c126 -113 323 -211 557 -277 113 -32 263 -63 270 -56 11 11 -181 269 -246 330 -17 17 -31 33 -31 36 0 4 46 10 103 13 255 16 634 112 921 233 l89 37 -34 17 c-68 35 -308 120 -449 159 -155 43 -396 91 -460 91 -21 0 -41 4 -44 9 -4 5 24 33 61 62 204 159 472 460 703 789 79 112 250 383 250 395 0 7 -195 -64 -345 -126 -170 -69 -510 -240 -652 -326 -146 -88 -273 -178 -369 -261 -120 -104 -139 -118 -132 -101 18 46 30 268 25 424 -13 342 -92 728 -240 1161 -52 151 -139 374 -147 374 -3 0 -26 -53 -52 -117z" />
+            <path d="M5703 3929 c-61 -18 -105 -100 -89 -166 5 -17 57 -78 137 -157 l129 -129 -352 -356 c-194 -196 -354 -358 -355 -360 -1 -2 -93 84 -203 190 -171 165 -206 194 -235 197 -46 4 -75 -25 -75 -75 0 -33 8 -44 83 -114 l82 -78 -305 -308 c-168 -169 -493 -497 -722 -728 -229 -231 -422 -432 -427 -447 -16 -42 -2 -64 98 -163 50 -49 91 -94 91 -99 0 -6 -72 -83 -160 -171 -178 -179 -183 -188 -130 -249 l31 -34 -281 -285 c-257 -262 -280 -288 -280 -320 0 -41 25 -67 66 -67 25 0 70 41 313 284 l285 285 33 -30 c60 -52 69 -47 252 135 l166 164 90 -85 c112 -105 129 -117 159 -109 13 3 333 318 751 741 l729 736 80 -80 c66 -65 87 -81 111 -81 59 0 99 54 74 103 -6 12 -97 106 -202 208 l-192 186 112 119 c61 65 222 229 357 364 l246 245 117 -116 c65 -64 129 -124 143 -133 83 -55 209 34 196 139 -4 37 -29 65 -403 434 -227 225 -412 400 -430 408 -36 15 -45 15 -90 2z m-496 -1431 l298 -296 -319 -322 -320 -321 -303 303 -303 303 317 317 c175 175 321 317 325 316 4 -2 141 -137 305 -300z" />
+          </g>
+        </svg>
+      )
     case 'alcohol':
       return (
         <svg className={cls} viewBox="0 0 160 159.61" aria-hidden="true">
@@ -140,20 +166,23 @@ function MenuIcon({ name, small = false }: { name?: string; small?: boolean }) {
 }
 
 function MenuList({ items, className = '' }: { items: MenuNode[]; className?: string }) {
+  const isTopMenu = className.includes('tw-topmenu')
+
   return (
     <ul className={className}>
       {items.map((item) => (
         <li key={item.label} className="tw-menu-item">
           <a href={item.href} target="_blank" rel="noreferrer" className="tw-menu-link">
-            <MenuIcon name={item.icon} />
-            {item.label}
+            <MenuIcon name={item.href} />
+            <span>{item.label}</span>
+            {isTopMenu && item.children && <span className="tw-caret" aria-hidden="true" />}
           </a>
           {item.children && (
             <ul className="tw-submenu">
               {item.children.map((child) => (
                 <li key={child.label}>
                   <a href={child.href} target="_blank" rel="noreferrer" className="tw-submenu-link">
-                    <MenuIcon name={child.icon} small />
+                    <MenuIcon name={child.href} small />
                     {child.label}
                   </a>
                 </li>
@@ -189,7 +218,7 @@ function TerwilleMenuBar() {
         .tw-inner {
           max-width: 1220px;
           margin: 0 auto;
-          padding: 10px 16px;
+          padding: 6px 20px;
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -202,8 +231,8 @@ function TerwilleMenuBar() {
         }
 
         .tw-logo img {
-          height: 50px;
-          width: auto;
+          width: 102px;
+          height: auto;
           display: block;
         }
 
@@ -212,7 +241,8 @@ function TerwilleMenuBar() {
           align-items: center;
           gap: 18px;
           flex: 1;
-          justify-content: flex-end;
+          justify-content: flex-start;
+          padding-left: 8px;
         }
 
         .tw-readspeaker {
@@ -221,9 +251,11 @@ function TerwilleMenuBar() {
           border-radius: 4px;
           padding: 4px 10px;
           font-weight: 600;
-          font-size: 13px;
+          font-size: 12px;
           text-decoration: none;
           white-space: nowrap;
+          order: 3;
+          margin-left: auto;
         }
 
         .tw-topmenu,
@@ -233,7 +265,27 @@ function TerwilleMenuBar() {
           padding: 0;
           display: flex;
           align-items: stretch;
-          gap: 2px;
+          gap: 0;
+        }
+
+        .tw-topmenu {
+          order: 1;
+        }
+
+        .tw-search {
+          order: 2;
+        }
+
+        .tw-topmenu .tw-menu-link {
+          padding: 4px 20px;
+        }
+
+        .tw-mainmenu {
+          gap: 0;
+        }
+
+        .tw-topmenu .tw-menu-link {
+          font-size: 12px;
         }
 
         .tw-menu-item {
@@ -245,14 +297,25 @@ function TerwilleMenuBar() {
           text-decoration: none;
           display: inline-flex;
           align-items: center;
-          gap: 7px;
-          min-height: 38px;
+          gap: 8px;
+          line-height: 20px;
           padding: 0 10px;
+          border-radius: 4px;
           font-size: 14px;
-          font-weight: 600;
+          font-weight: 700;
           color: #09529a;
-          transition: color 0.2s ease;
+          transition: color 0.2s ease, background-color 0.2s ease;
           white-space: nowrap;
+        }
+
+        .tw-caret {
+          width: 0;
+          height: 0;
+          border-left: 4px solid transparent;
+          border-right: 4px solid transparent;
+          border-top: 5px solid currentColor;
+          margin-left: 2px;
+          opacity: 0.9;
         }
 
         .tw-mainnav {
@@ -266,13 +329,16 @@ function TerwilleMenuBar() {
 
         .tw-mainnav .tw-menu-link {
           color: #fff;
-          min-height: 46px;
-          font-size: 15px;
+          min-height: 60px;
+          font-size: 13px;
           font-weight: 700;
+          border-radius: 0;
+          padding: 20px 19px;
         }
 
         .tw-menu-item:hover > .tw-menu-link {
-          color: #4cc6e8;
+          color: #0069b4;
+          background: #fff;
         }
 
         .tw-submenu {
@@ -280,9 +346,9 @@ function TerwilleMenuBar() {
           position: absolute;
           left: 0;
           top: 100%;
-          min-width: 250px;
-          background: #fff;
-          border: 1px solid #d7e1f0;
+          min-width: 240px;
+          background: #0069b4;
+          border: 1px solid #0069b4;
           box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
           padding: 6px 0;
           margin: 0;
@@ -302,41 +368,80 @@ function TerwilleMenuBar() {
           align-items: center;
           gap: 8px;
           padding: 9px 14px;
-          color: #09529a;
+          color: #fff;
           text-decoration: none;
-          font-size: 14px;
+          font-size: 12px;
           font-weight: 600;
+          transition: color 0.2s ease, background-color 0.2s ease;
+        }
+
+        .tw-mainnav .tw-submenu-link {
+          font-size: 12px;
+          padding: 10px 14px;
+          gap: 8px;
         }
 
         .tw-icon {
-          width: 16px;
-          height: 16px;
+          width: 2.5rem;
+          height: 2rem;
           color: currentColor;
           flex: 0 0 auto;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          margin-right: 1rem;
         }
 
         .tw-sub-icon {
-          width: 14px;
-          height: 14px;
-          color: #0069b4;
+          width: 1.25rem;
+          height: 1.25rem;
+          color: currentColor;
           flex: 0 0 auto;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          margin-right: 0.5rem;
+        }
+
+        .tw-icon--verslavingszorg {
+          width: 2.5rem;
+          height: 2rem;
+        }
+
+        .tw-icon svg,
+        .tw-sub-icon svg {
+          width: 100%;
+          height: 100%;
+          display: block;
+        }
+
+        .tw-icon svg *,
+        .tw-sub-icon svg * {
+          fill: currentColor !important;
         }
 
         .tw-submenu-link:hover {
-          background: #f1f6fc;
+          background: #fff;
+          color: #0069b4;
         }
 
         .tw-search {
-          border: 1px solid #b8cae4;
-          border-radius: 100px;
-          width: 34px;
-          height: 34px;
+          border: 0;
+          border-radius: 0;
+          width: 33px;
+          height: 33px;
           display: inline-flex;
           align-items: center;
           justify-content: center;
           color: #09529a;
-          background: #fff;
+          background: transparent;
           font-size: 16px;
+        }
+
+        .tw-search svg {
+          width: 16px;
+          height: 16px;
+          display: block;
         }
 
         .tw-mobile-toggle {
@@ -358,12 +463,22 @@ function TerwilleMenuBar() {
         }
 
         .tw-mobile-panel a {
-          color: #09529a;
+          color: #fff;
           text-decoration: none;
           font-weight: 600;
           font-size: 14px;
           display: block;
-          padding: 8px 0;
+          padding: 8px 12px;
+          background: #0069b4;
+          border: 1px solid #0069b4;
+          border-radius: 4px;
+          margin-bottom: 8px;
+          transition: color 0.2s ease, background-color 0.2s ease;
+        }
+
+        .tw-mobile-panel a:hover {
+          background: #fff;
+          color: #0069b4;
         }
 
         @media (max-width: 1100px) {
@@ -378,6 +493,18 @@ function TerwilleMenuBar() {
 
           .tw-mobile-panel {
             display: block;
+          }
+        }
+
+        @media (min-width: 768px) {
+          .tw-mainnav .tw-menu-item > .tw-submenu {
+            top: 4.5rem;
+          }
+
+          .tw-topmenu .tw-menu-item > .tw-submenu {
+            top: 40px;
+            min-width: auto;
+            width: max-content;
           }
         }
       `}</style>
@@ -414,7 +541,10 @@ function TerwilleMenuBar() {
             <MenuList items={topMenu} className="tw-topmenu" />
 
             <button type="button" className="tw-search" aria-label="Zoeken">
-              🔍
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" strokeWidth="2" />
+                <line x1="16" y1="16" x2="21" y2="21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              </svg>
             </button>
           </div>
         </div>
